@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Makana",
+    "slug": "makana",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logo.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "scheme": "makana",
+    "splash": {
+      "image": "./assets/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#f7f5f2"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.makana.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/logo.png",
+        "backgroundColor": "#f7f5f2"
+      },
+      "package": "com.makana.app",
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/logo.png"
+    }
+  }
+}

@@ -1,0 +1,97 @@
+version: '3.8'
+
+services:
+  # Backend API
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: makana-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - /app/__pycache__
+    environment:
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - SUPABASE_JWT_SECRET=${SUPABASE_JWT_SECRET}
+      - APP_ENV=development
+      - LOG_LEVEL=INFO
+    depends_on:
+      - db
+    networks:
+      - makana-network
+    restart: unless-stopped
+
+  # PostgreSQL Database (for local development)
+  db:
+    image: postgres:15-alpine
+    container_name: makana-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=makana
+      - POSTGRES_PASSWORD=makana_dev_password
+      - POSTGRES_DB=makana_dev
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/migrations:/docker-entrypoint-initdb.d
+    networks:
+      - makana-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U makana"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis (for future use with Celery in v1)
+  redis:
+    image: redis:7-alpine
+    container_name: makana-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - makana-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    profiles:
+      - v1  # Only start with --profile v1
+
+  # Celery Worker (for future use in v1)
+  celery:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: makana-celery
+    command: celery -A tasks worker --loglevel=info
+    volumes:
+      - ./backend:/app
+    environment:
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - SUPABASE_JWT_SECRET=${SUPABASE_JWT_SECRET}
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+      - db
+    networks:
+      - makana-network
+    restart: unless-stopped
+    profiles:
+      - v1  # Only start with --profile v1
+
+networks:
+  makana-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:

@@ -1,0 +1,349 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Makana Design System - Calm, Restrained, Intentional */
+
+:root {
+  /* Color Palette - Neutral First */
+  --color-parchment: #f7f5f2;
+  --color-soft-stone: #ece9e4;
+  --color-warm-gray: #d6d2cb;
+  --color-charcoal: #1f1f1f;
+  --color-muted-ash: #5f5f5f;
+  --color-placeholder: #9a9a9a;
+  
+  /* Primary Accent - Deep Belt Charcoal */
+  --color-accent: #2B2B2B;
+  --color-accent-hover: #3B3B3B;
+  --color-accent-pressed: #1B1B1B;
+  
+  /* Semantic Colors - Restrained */
+  --color-success: #5a7a5f;
+  --color-success-light: #c5d4c7;
+  --color-warning: #9a7a4a;
+  --color-warning-light: #d4c5a5;
+  --color-error: #a5544a;
+  --color-error-light: #d4a5a0;
+  
+  /* Disabled State */
+  --color-disabled: #5a5a5a;
+}
+
+/* Dark Mode Theme */
+.dark {
+  /* Dark Mode Surfaces */
+  --color-parchment: #121212;          /* Dark Surface */
+  --color-soft-stone: #1A1A1A;         /* Dark Raised Surface */
+  --color-warm-gray: #4A4A4A;          /* Charcoal Border */
+  --color-charcoal: #eaeaea;           /* Text color */
+  --color-muted-ash: #9a9a9a;          /* Muted text */
+  --color-placeholder: #6a6a6a;
+  
+  /* Dark Mode Accent - Charcoal Base identity with lighter hovers */
+  --color-accent: #2B2B2B;             /* Charcoal Base */
+  --color-accent-hover: #4A4A4A;       /* Charcoal Border (lighter for visibility) */
+  --color-accent-pressed: #1B1B1B;     /* Darker press state */
+  
+  /* Dark Mode Borders */
+  --color-charcoal-border: #4A4A4A;    /* Charcoal Border */
+  --color-charcoal-hover: #6A6A6A;     /* Charcoal Hover Border */
+  
+  /* Disabled State */
+  --color-disabled: #5a5a5a;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-charcoal);
+  background-color: var(--color-parchment);
+  min-height: 100vh;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-charcoal);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-md);
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-md);
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+}
+
+h5 {
+  font-size: var(--font-size-lg);
+}
+
+h6 {
+  font-size: var(--font-size-base);
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+  line-height: var(--line-height-normal);
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+a:focus-visible {
+  outline: none;
+}
+
+/* Focus States - Removed outlines for cleaner click interactions */
+*:focus-visible {
+  outline: none;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+}
+
+/* Remove default focus for mouse users, keep for keyboard */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Selection Styling - Clean and visible in both modes */
+::selection {
+  background-color: #2B2B2B;           /* Charcoal Base in light mode */
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: #2B2B2B;
+  color: #ffffff;
+}
+
+.dark ::selection {
+  background-color: #6A6A6A;           /* Charcoal Hover Border in dark mode */
+  color: #ffffff;
+}
+
+.dark ::-moz-selection {
+  background-color: #6A6A6A;
+  color: #ffffff;
+}
+
+/* Scrollbar Styling - Calm, Minimal */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-soft-stone);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-warm-gray);
+  border-radius: var(--radius-lg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-ash);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Accessibility Utilities */
+
+/* Screen Reader Only - Visually hidden but accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip to main content link */
+.skip-to-main {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  z-index: 9999;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--color-iron-red);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 var(--radius-md) 0;
+  transition: top var(--transition-fast);
+}
+
+.skip-to-main:focus {
+  top: 0;
+  outline: 2px solid var(--color-charcoal);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-warm-gray: #b0aca5;
+  }
+  
+  *:focus-visible {
+    outline-width: 3px;
+  }
+  
+  * {
+    border-width: 2px !important;
+  }
+  
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    border: 2px solid currentColor !important;
+  }
+}
+
+/* Text Scaling Support - Ensure layout works up to 200% */
+@media (min-width: 1px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Ensure layout doesn't break at larger text sizes */
+* {
+  max-width: 100%;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Calm Animations - Subtle, Respectful */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--transition-base) ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp var(--transition-base) ease-out;
+}
+
+/* Utility Classes */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* 3D Perspective for flip animations */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+  
+  button,
+  .no-print {
+    display: none;
+  }
+  
+  * {
+    box-shadow: none !important;
+  }
+}

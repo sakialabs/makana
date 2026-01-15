@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  # Backend API (Production)
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: makana-api-prod
+    ports:
+      - "8000:8000"
+    environment:
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - SUPABASE_JWT_SECRET=${SUPABASE_JWT_SECRET}
+      - APP_ENV=production
+      - LOG_LEVEL=WARNING
+    networks:
+      - makana-network
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+
+networks:
+  makana-network:
+    driver: bridge
