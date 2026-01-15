@@ -1,4 +1,5 @@
 [build]
+  base = "web"
   command = "npm run build"
   publish = ".next"
 
@@ -7,13 +8,6 @@
 
 [build.environment]
   NODE_VERSION = "20"
-
-# Redirect all requests to Next.js
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/___netlify-handler"
-  status = 200
-  force = false
 
 # Security headers
 [[headers]]
