@@ -21,6 +21,7 @@ export function Footer() {
     legal: [
       { href: '/privacy', label: 'Privacy Policy' },
       { href: '/terms', label: 'Terms of Service' },
+      { href: '/data-rights', label: 'Data Rights' },
     ],
   };
 
@@ -38,7 +39,7 @@ export function Footer() {
                 </span>
               </div>
               <p className="text-sm text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed">
-                A practice medium for developing intentional strength.
+                Adaptive practice for responsible breakthroughs.
               </p>
             </div>
 
@@ -82,7 +83,7 @@ export function Footer() {
           {/* Bottom Bar */}
           <div className="mt-12 pt-8 border-t border-[#d6d2cb] dark:border-[#4A4A4A]">
             <p className="text-sm text-[#5f5f5f] dark:text-[#9a9a9a] text-center">
-              © {currentYear} Makana. Built with care for intentional practice.
+              © {currentYear} Makana. Built with 💖 for meaningful progress.
             </p>
           </div>
         </div>

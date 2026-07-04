@@ -125,20 +125,24 @@ People move between setups as life changes.
 
 ---
 
-### 3. Clutch: Alignment and Pull
+### 3. Clutch: Personal Practice Companion
 
-Clutch is Makana’s alignment layer.
+Clutch is Makana's adaptive practice companion.
 
-Clutch does not motivate or coach.  
-It subtly adjusts conditions by:
+It learns the user's setup, goals, friction patterns, preferred pace, recovery needs, active missions, and learning or building preferences.
 
+Clutch does not motivate or correct people. It adjusts conditions by:
+
+- shifting modes
 - limiting force when needed
 - reducing scope under stress
+- recommending the next useful quest
 - encouraging early disengagement
 - preserving momentum
+- surfacing risk checks when stakes are serious
+- reminding the user to capture artifacts and dividends
 
-Clutch operates quietly.  
-Alignment is felt, not announced.
+Clutch operates quietly. Alignment is felt through better next moves, not through chatter.
 
 ---
 

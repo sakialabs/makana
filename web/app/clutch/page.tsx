@@ -1,48 +1,175 @@
 /**
- * Clutch Page (Meet Clutch)
- * 
- * Explains Clutch - Makana's alignment layer.
- * Features Clutch logo with smooth magnet animation.
+ * Clutch Page
+ *
+ * Introduces Clutch as Makana's personal adaptive practice companion.
  */
 
 'use client';
 
+import Link from 'next/link';
 import { useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Container } from '@/components/ui/container';
 import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { ClutchLogo } from '@/components/ui/logo';
+import { PageTransition } from '@/components/ui/page-transition';
+
+type InsightItem = {
+  title: string;
+  body: string;
+};
+
+type FitItem = {
+  name: string;
+  cue: string;
+};
+
+const learnedSignals: InsightItem[] = [
+  {
+    title: 'Setup',
+    body: 'The life or work mode shaping today.',
+  },
+  {
+    title: 'Goals',
+    body: 'The mission that gives effort direction.',
+  },
+  {
+    title: 'Friction',
+    body: 'Avoidance, over-scoping, stuck points, and unclear starts.',
+  },
+  {
+    title: 'Pace',
+    body: 'How much force fits without breaking continuity.',
+  },
+  {
+    title: 'Recovery',
+    body: 'The conditions that make a return possible.',
+  },
+  {
+    title: 'Practice',
+    body: 'The forms that build mastery over time.',
+  },
+];
+
+const guidance: InsightItem[] = [
+  {
+    title: 'Mode-aware guidance',
+    body: 'Clutch shifts between ignition, building, reflection, recovery, and review.',
+  },
+  {
+    title: 'Personal quests',
+    body: 'The next move gets smaller, clearer, or more strategic based on the state.',
+  },
+  {
+    title: 'Burnout-safe pacing',
+    body: 'Low energy lowers friction. Repeated strain triggers smaller scopes.',
+  },
+  {
+    title: 'Practice forms',
+    body: 'Clean starts, clean stops, recovery returns, and deep practice become trainable.',
+  },
+  {
+    title: 'Risk checks',
+    body: 'Serious missions pause for benefits, harms, evidence, scope, and stakeholders.',
+  },
+  {
+    title: 'Artifact reminders',
+    body: 'Useful work becomes notes, diagrams, commits, prototypes, maps, or playbooks.',
+  },
+];
+
+const fits: FitItem[] = [
+  {
+    name: 'Builder Fit',
+    cue: 'Turn ideas into one useful artifact.',
+  },
+  {
+    name: 'Study Fit',
+    cue: 'Learn one concept. Save the map.',
+  },
+  {
+    name: 'Recovery Fit',
+    cue: 'Lower force. Preserve the thread.',
+  },
+  {
+    name: 'Scout Fit',
+    cue: 'Explore before committing.',
+  },
+  {
+    name: 'Deep Practice Fit',
+    cue: 'Hold focus. Review the form.',
+  },
+  {
+    name: 'Guardrail Fit',
+    cue: 'Check risk before rollout.',
+  },
+  {
+    name: 'Dividend Fit',
+    cue: 'Leave something reusable behind.',
+  },
+  {
+    name: 'Regulation Fit',
+    cue: 'Clarify constraints before the work scales.',
+  },
+];
+
+const practiceLoop = [
+  'Assess state',
+  'Recommend practice',
+  'Execute quest',
+  'Capture feedback',
+  'Update mastery',
+  'Adapt next move',
+];
+
+const clutchLines = [
+  'One clean move.',
+  'Shrink the task.',
+  'Low energy. Lower friction.',
+  'Scout before building.',
+  'Risk check before rollout.',
+  'Good stop. Momentum saved.',
+];
+
+const responsibleChecks = [
+  'Benefit',
+  'Harm',
+  'Stakeholder',
+  'Evidence',
+  'Scope',
+  'Regulation',
+  'Dividend',
+  'Review',
+];
 
 export default function ClutchPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Smooth spring animation for magnet effect
   const springConfig = { damping: 20, stiffness: 200 };
   const x = useSpring(mouseX, springConfig);
   const y = useSpring(mouseY, springConfig);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
-    
+
     const rect = containerRef.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    
     const distanceX = e.clientX - centerX;
     const distanceY = e.clientY - centerY;
-    
-    // Magnet effect: pull towards cursor within range
     const maxDistance = 250;
-    const dist = Math.sqrt(distanceX ** 2 + distanceY ** 2);
-    
-    if (dist < maxDistance) {
-      const strength = 1 - dist / maxDistance;
-      mouseX.set(distanceX * strength * 0.4);
-      mouseY.set(distanceY * strength * 0.4);
+    const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
+
+    if (distance < maxDistance) {
+      const strength = 1 - distance / maxDistance;
+      mouseX.set(distanceX * strength * 0.35);
+      mouseY.set(distanceY * strength * 0.35);
     } else {
       mouseX.set(0);
       mouseY.set(0);
@@ -55,135 +182,226 @@ export default function ClutchPage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#f7f5f2] dark:bg-[#121212] transition-colors duration-300">
+    <div className="flex min-h-screen flex-col bg-[#f7f5f2] text-[#1f1f1f] transition-colors duration-300 dark:bg-[#121212] dark:text-[#eaeaea]">
       <Header />
 
-      <main className="flex-1 py-20 bg-[#f7f5f2] dark:bg-[#121212] transition-colors duration-300" role="main" aria-labelledby="clutch-heading">
-        {/* Clutch Logo with Magnet Animation */}
-        <motion.div 
-          ref={containerRef}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          className="flex justify-center items-center pb-16"
-          aria-label="Interactive Clutch logo with magnet effect"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-        >
-          <motion.div
-            style={{ x, y }}
-            className="cursor-pointer"
-          >
-            <motion.div
-              role="img"
-              aria-label="Clutch logo"
-              animate={{
-                y: [0, -15, 0],
-                rotate: [0, 2, -2, 0]
-              }}
-              transition={{
-                duration: 3.5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              <ClutchLogo size="lg" />
-            </motion.div>
-          </motion.div>
-        </motion.div>
+      <PageTransition
+        id="main-content"
+        className="flex-1"
+        role="main"
+        aria-labelledby="clutch-heading"
+      >
+        <section className="bg-[#f7f5f2] pb-16 pt-16 transition-colors duration-300 dark:bg-[#121212] md:pb-20 md:pt-20">
+          <Container size="md">
+            <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+              <motion.div
+                ref={containerRef}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                className="mb-8 flex h-36 w-36 items-center justify-center"
+                aria-label="Interactive Clutch logo"
+              >
+                <motion.div style={{ x, y }} className="cursor-pointer">
+                  <motion.div
+                    role="img"
+                    aria-label="Clutch logo"
+                    animate={{ y: [0, -10, 0], rotate: [0, 2, -2, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                  >
+                    <ClutchLogo size="lg" />
+                  </motion.div>
+                </motion.div>
+              </motion.div>
 
-        <Container size="md">
-          <article className="space-y-16">
-            <div className="text-center space-y-6">
-              <h1 id="clutch-heading" className="text-5xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea]">
-                Meet Clutch
+              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#5f5f5f] dark:text-[#9a9a9a]">
+                Personal practice companion
+              </p>
+
+              <h1
+                id="clutch-heading"
+                className="mb-6 text-5xl font-semibold leading-tight text-[#1f1f1f] dark:text-[#eaeaea] md:text-6xl"
+              >
+                Clutch
               </h1>
-              <p className="text-2xl text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed max-w-3xl mx-auto">
-                Clutch is Makana&apos;s alignment layer. It represents attraction,
-                alignment, and gentle pull toward what matters.
+
+              <p className="max-w-3xl text-xl leading-relaxed text-[#5f5f5f] dark:text-[#9a9a9a] md:text-2xl">
+                Every user enters Makana with their own Clutch. It learns your
+                setup, goals, friction patterns, preferred pace, and recovery
+                needs, then helps choose the next useful move.
+              </p>
+
+              <div
+                className="mt-8 flex flex-col gap-3 sm:flex-row"
+                role="group"
+                aria-label="Clutch actions"
+              >
+                <Link href="/auth?mode=signup">
+                  <Button size="lg" ariaLabel="Begin practice with Clutch">
+                    Begin Practice
+                  </Button>
+                </Link>
+                <Link href="#clutch-fits">
+                  <Button variant="secondary" size="lg" ariaLabel="View Clutch fits">
+                    View Fits
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        <section className="border-y border-[#d6d2cb] bg-[#ece9e4] py-12 transition-colors duration-300 dark:border-[#2B2B2B] dark:bg-[#1A1A1A]" aria-label="Clutch voice examples">
+          <Container>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
+              {clutchLines.map((line) => (
+                <div
+                  key={line}
+                  className="rounded-lg border border-[#d6d2cb] bg-[#f7f5f2] px-4 py-3 text-center text-sm font-medium text-[#1f1f1f] dark:border-[#3B3B3B] dark:bg-[#121212] dark:text-[#eaeaea]"
+                >
+                  {line}
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        <section className="bg-[#f7f5f2] py-20 transition-colors duration-300 dark:bg-[#121212]" aria-labelledby="learns-heading">
+          <Container>
+            <div className="mb-10 max-w-2xl">
+              <h2 id="learns-heading" className="mb-4 text-3xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] md:text-4xl">
+                What Clutch learns
+              </h2>
+              <p className="text-lg leading-relaxed text-[#5f5f5f] dark:text-[#9a9a9a]">
+                Onboarding stays light. Over time, practice gives Clutch better
+                signal about what helps you start, stop, recover, and continue.
               </p>
             </div>
 
-            <section aria-labelledby="what-clutch-does">
-              <h2 id="what-clutch-does" className="text-3xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mb-8 text-center">
-                What Clutch Does
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {learnedSignals.map((item) => (
+                <Card key={item.title} as="article" padding="lg" hover>
+                  <h3 className="mb-3 text-xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea]">
+                    {item.title}
+                  </h3>
+                  <p className="text-[#5f5f5f] dark:text-[#9a9a9a]">{item.body}</p>
+                </Card>
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        <section className="bg-[#ece9e4] py-20 transition-colors duration-300 dark:bg-[#1A1A1A]" aria-labelledby="guidance-heading">
+          <Container>
+            <div className="mb-10 max-w-2xl">
+              <h2 id="guidance-heading" className="mb-4 text-3xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] md:text-4xl">
+                How Clutch adapts
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Card className="p-8">
-                  <h3 className="text-xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mb-3">
-                    Nudges gently
-                  </h3>
-                  <p className="text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed">
-                    Clutch suggests without demanding. It respects your capacity.
-                  </p>
-                </Card>
+              <p className="text-lg leading-relaxed text-[#5f5f5f] dark:text-[#9a9a9a]">
+                The companion is useful because it changes the practice, not
+                because it talks more.
+              </p>
+            </div>
 
-                <Card className="p-8">
-                  <h3 className="text-xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mb-3">
-                    Speaks in short lines
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {guidance.map((item) => (
+                <Card key={item.title} as="article" padding="lg" hover className="dark:bg-[#121212]">
+                  <h3 className="mb-3 text-xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea]">
+                    {item.title}
                   </h3>
-                  <p className="text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed">
-                    Clear, calm communication. No over-explanation.
-                  </p>
+                  <p className="text-[#5f5f5f] dark:text-[#9a9a9a]">{item.body}</p>
                 </Card>
+              ))}
+            </div>
+          </Container>
+        </section>
 
-                <Card className="p-8">
-                  <h3 className="text-xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mb-3">
-                    Respects silence
-                  </h3>
-                  <p className="text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed">
-                    Clutch knows when to be quiet. Silence is a feature.
-                  </p>
-                </Card>
-
-                <Card className="p-8">
-                  <h3 className="text-xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mb-3">
-                    Protects energy
-                  </h3>
-                  <p className="text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed">
-                    Limits force when needed. Disengages early to prevent damage.
-                  </p>
-                </Card>
-              </div>
-            </section>
-
-            <section aria-labelledby="how-clutch-works">
-              <h2 id="how-clutch-works" className="text-3xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mb-8 text-center">
-                How Clutch Works
+        <section id="clutch-fits" className="bg-[#f7f5f2] py-20 transition-colors duration-300 dark:bg-[#121212]" aria-labelledby="fits-heading">
+          <Container>
+            <div className="mb-10 max-w-2xl">
+              <h2 id="fits-heading" className="mb-4 text-3xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] md:text-4xl">
+                Clutch fits
               </h2>
-              <div className="bg-[#ece9e4] dark:bg-[#1A1A1A] p-10 rounded-lg space-y-6 transition-colors duration-300">
-                <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed">
-                  Mechanically, Clutch engages smoothly, limits force when
-                  needed, and disengages early to prevent damage.
-                </p>
-                <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed">
-                  Clutch preserves momentum instead of extracting output.
-                </p>
-                <p className="text-xl text-[#1f1f1f] dark:text-[#eaeaea] font-medium">
-                  Alignment is felt, not announced.
-                </p>
-              </div>
-            </section>
+              <p className="text-lg leading-relaxed text-[#5f5f5f] dark:text-[#9a9a9a]">
+                Fits give Clutch lightweight visual personality tied to a setup
+                or mode. They change the feel without turning practice into
+                identity.
+              </p>
+            </div>
 
-            <section aria-labelledby="what-clutch-is-not">
-              <h2 id="what-clutch-is-not" className="text-3xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mb-8 text-center">
-                What Clutch Is Not
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+              {fits.map((fit) => (
+                <Card key={fit.name} as="article" padding="lg" hover>
+                  <h3 className="mb-3 text-lg font-semibold text-[#1f1f1f] dark:text-[#eaeaea]">
+                    {fit.name}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-[#5f5f5f] dark:text-[#9a9a9a]">{fit.cue}</p>
+                </Card>
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        <section className="bg-[#ece9e4] py-20 transition-colors duration-300 dark:bg-[#1A1A1A]" aria-labelledby="loop-heading">
+          <Container>
+            <div className="mb-10 max-w-2xl">
+              <h2 id="loop-heading" className="mb-4 text-3xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] md:text-4xl">
+                Rules first
               </h2>
-              <div className="bg-[#ece9e4] dark:bg-[#1A1A1A] p-10 rounded-lg transition-colors duration-300">
-                <ul className="space-y-3 text-lg text-[#5f5f5f] dark:text-[#9a9a9a]">
-                  <li>• Not a motivational coach</li>
-                  <li>• Not a productivity optimizer</li>
-                  <li>• Not a performance tracker</li>
-                  <li>• Not a pressure system</li>
-                </ul>
-                <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed mt-6">
-                  Clutch adjusts conditions. It does not correct people.
-                </p>
-              </div>
-            </section>
-          </article>
-        </Container>
-      </main>
+              <p className="text-lg leading-relaxed text-[#5f5f5f] dark:text-[#9a9a9a]">
+                Clutch is a deterministic-first policy engine. Optional AI can
+                help with language later. The core recommendation stays
+                explainable.
+              </p>
+            </div>
+
+            <ol className="grid gap-4 md:grid-cols-3 lg:grid-cols-6" aria-label="Adaptive practice loop">
+              {practiceLoop.map((step, index) => (
+                <li key={step} className="flex min-h-32 flex-col justify-between rounded-lg border border-[#d6d2cb] bg-[#f7f5f2] p-5 dark:border-[#3B3B3B] dark:bg-[#121212]">
+                  <span className="text-sm font-semibold text-[#5f5f5f] dark:text-[#9a9a9a]">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span className="text-base font-medium text-[#1f1f1f] dark:text-[#eaeaea]">{step}</span>
+                </li>
+              ))}
+            </ol>
+          </Container>
+        </section>
+
+        <section className="bg-[#f7f5f2] py-20 transition-colors duration-300 dark:bg-[#121212]" aria-labelledby="guardrails-heading">
+          <Container size="md">
+            <div className="text-center">
+              <h2 id="guardrails-heading" className="mb-5 text-3xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] md:text-4xl">
+                Serious missions get guardrails
+              </h2>
+              <p className="mx-auto max-w-3xl text-lg leading-relaxed text-[#5f5f5f] dark:text-[#9a9a9a]">
+                When a mission touches other people, systems, policy, medicine,
+                climate, infrastructure, or public life, Clutch shifts into
+                careful review.
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {responsibleChecks.map((check) => (
+                <div
+                  key={check}
+                  className="rounded-lg border border-[#d6d2cb] bg-[#ece9e4] px-4 py-3 text-center text-sm font-medium text-[#1f1f1f] dark:border-[#2B2B2B] dark:bg-[#1A1A1A] dark:text-[#eaeaea]"
+                >
+                  {check} Check
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 flex justify-center">
+              <Link href="/auth?mode=signup">
+                <Button size="lg" ariaLabel="Begin practice with Makana">
+                  One Clean Move
+                  <ArrowRight aria-hidden="true" className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
+          </Container>
+        </section>
+      </PageTransition>
 
       <Footer />
     </div>

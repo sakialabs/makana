@@ -1,6 +1,6 @@
 # 🥋 Makana
 
-> Makana is a **practice medium for developing intentional strength** by starting, stopping, and shaping life with care, alignment, and respect for energy.
+> Makana is an **adaptive practice system for responsible breakthroughs**. It helps people turn ambition into practice, practice into artifacts, and artifacts into shared progress.
 
 The name *Makana* comes from Sudanese slang, referring to a person who is **strong, intelligent, and formidable**.
 
@@ -15,8 +15,9 @@ It echoes the literal meaning of *Kung Fu*: mastery cultivated through practice 
 - [🚀 Quick Start](#-quick-start)
 - [🧭 The idea](#-the-idea)
 - [✨ What Makana helps with](#-what-makana-helps-with)
+- [🧱 Product primitives](#-product-primitives)
 - [🌊 Core flow](#-core-flow)
-- [🧲 Clutch (alignment & pull)](#-clutch-alignment--pull)
+- [🧲 Clutch (adaptive companion)](#-clutch-adaptive-companion)
 - [🧩 Setups (modular ways of practicing)](#-setups-modular-ways-of-practicing)
 - [🌿 Vitality & healthspan](#-vitality--healthspan)
 - [🕹️ Gamification (practice & mastery)](#️-gamification-practice--mastery)
@@ -49,13 +50,13 @@ See [testing.md](docs/testing.md) for running tests.
 
 Makana is not a productivity framework, habit tracker, or doctrine.
 
-It is a **practice medium**.
+It is an **adaptive practice system**.
 
 Like clay.  
 Like an instrument.  
 Like martial arts forms.
 
-Makana provides structure, timing, and gentle constraints so people can practice living in a way that fits their **energy, values, and season**.
+Makana provides structure, timing, and gentle constraints so people can learn deeply, build useful things, protect energy, check risk, recover cleanly, and share what they discover.
 
 The user is the practitioner.  
 Makana provides the medium.
@@ -66,10 +67,13 @@ Makana provides the medium.
 
 Makana focuses on fundamentals that matter in real life:
 
-- Starting when it's hard to start  
-- Stopping cleanly, without guilt or crashing  
-- Protecting energy over time  
-- Adjusting force instead of forcing consistency  
+- Turning ambition into small useful moves
+- Building through missions and quests
+- Creating artifacts that make progress real
+- Stopping cleanly, without guilt or crashing
+- Protecting energy over time
+- Checking risk before serious work scales
+- Leaving dividends that help other people
 
 These are not hacks.  
 They are skills.  
@@ -77,9 +81,25 @@ They compound.
 
 ---
 
+## 🧱 Product primitives
+
+Makana is built around:
+
+- **User State** - energy, focus, stress, time, momentum, and recovery needs
+- **Setup** - the current life or work mode
+- **Mission** - a meaningful project, goal, or direction
+- **Quest** - the next actionable unit of progress
+- **Practice Form** - a repeatable pattern that builds mastery
+- **Artifact** - proof that practice became useful
+- **Reflection** - the loop that turns experience into intelligence
+- **Risk Check** - safeguards for serious missions
+- **Dividend Artifact** - reusable work that creates shared progress
+
+---
+
 ## 🌊 Core flow
 
-Makana is intentionally minimal.
+Makana's v0 foundation is intentionally minimal.
 
 - **Daily Check**  
   A short check-in and one task for tomorrow
@@ -101,24 +121,27 @@ Foundational by intent.
 
 ---
 
-## 🧲 Clutch (alignment & pull)
+## 🧲 Clutch (adaptive companion)
 
-**Clutch is Makana's alignment layer.**
+**Clutch is Makana's adaptive practice companion.**
 
-Clutch represents attraction, alignment, and gentle pull toward what matters.
+It is not the whole product. It is the layer that helps Makana adapt to the user's current state, setup, mission, pace, and recovery needs.
 
 It:
-- Nudges gently  
+- Suggests the next useful move  
 - Speaks in short lines  
 - Respects silence  
-- Protects energy  
+- Protects energy
+- Helps preserve momentum after disruption
 
 Mechanically, Clutch:
-- Engages smoothly  
-- Limits force when needed  
-- Disengages early to prevent damage  
+- Reads state and context
+- Chooses lightweight guidance
+- Recommends practice forms
+- Checks risk before serious missions scale
+- Reminds users about artifacts and dividends
 
-Clutch preserves momentum instead of extracting output.
+Clutch should feel useful, quiet, and personal. It keeps the mission moving one clean move at a time.
 
 ---
 

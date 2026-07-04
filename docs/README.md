@@ -15,6 +15,7 @@ This folder contains all planning, design, and reference documents for Makana.
 - `deployment.md` - Deployment instructions and configuration
 
 **Vision & Philosophy**
+- `refresh.md` - Current Makana refresh direction and execution order
 - `vision.md` - Product vision and core principles
 - `manifesto.md` - Beliefs about practice, energy, and intentional strength
 - `tone.md` - Voice and language guidelines for all communication
@@ -23,17 +24,19 @@ This folder contains all planning, design, and reference documents for Makana.
 - `visuals.md` - Design system, color palette, typography, and UI principles
 
 **Feature Planning**
+- `clutch.md` - Personal Clutch Companion model, modes, fits, safeguards, and implementation boundary
 - `gamification.md` - Practice Forms and recognition (v1)
 - `onboarding.md` - Onboarding flow design
 
 ## Reading Order
 
 **New to Makana?** Start here:
-1. `vision.md` - Understand what we're building and why
-2. `manifesto.md` - Core beliefs that guide all decisions
-3. `roadmap.md` - Product scope and implementation status
-4. `design.md` - How the system works
-5. `tasks.md` - What to work on next
+1. `refresh.md` - Understand the current product direction
+2. `vision.md` - Understand what we're building and why
+3. `manifesto.md` - Core beliefs that guide all decisions
+4. `roadmap.md` - Product scope and implementation status
+5. `design.md` - How the system works
+6. `tasks.md` - What to work on next
 
 **Ready to contribute?**
 1. `tasks.md` - See current priorities

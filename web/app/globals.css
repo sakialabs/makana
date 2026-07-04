@@ -229,7 +229,7 @@ select:focus-visible {
   left: 0;
   z-index: 9999;
   padding: var(--spacing-md) var(--spacing-lg);
-  background-color: var(--color-iron-red);
+  background-color: var(--color-accent);
   color: white;
   font-weight: 600;
   text-decoration: none;

@@ -1,193 +1,215 @@
 /**
  * About Page
- * 
- * Explains Makana's vision, mission, and philosophy.
- * Content from vision.md and manifesto.md.
+ *
+ * Explains Makana's refreshed vision, mission, and product model.
  */
 
 'use client';
 
-import { motion } from 'framer-motion';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Container } from '@/components/ui/container';
+import { Card } from '@/components/ui/card';
+import { PageTransition } from '@/components/ui/page-transition';
+
+const conceptGroups = [
+  {
+    title: 'Direction',
+    items: ['Setups', 'Missions', 'Quests'],
+  },
+  {
+    title: 'Practice',
+    items: ['Forms', 'Reflection', 'Recovery'],
+  },
+  {
+    title: 'Contribution',
+    items: ['Artifacts', 'Risk Checks', 'Dividends'],
+  },
+];
+
+const missionExamples = [
+  'Learn a difficult concept and turn it into a map.',
+  'Build a tiny prototype before scaling the idea.',
+  'Review risks before a serious rollout.',
+  'Create a public note that helps someone else start.',
+];
+
+const masteryCards = [
+  'Energy Mastery',
+  'Focus Mastery',
+  'Strategy Mastery',
+  'Learning Mastery',
+  'Build Mastery',
+  'Risk Mastery',
+  'Contribution Mastery',
+  'Recovery Mastery',
+];
+
+const responsibleChecks = [
+  'Benefit',
+  'Harm',
+  'Stakeholder',
+  'Evidence',
+  'Scope',
+  'Regulation',
+  'Dividend',
+  'Review',
+];
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#f7f5f2] dark:bg-[#121212] transition-colors duration-300">
+    <div className="flex min-h-screen flex-col bg-[#f7f5f2] text-[#1f1f1f] transition-colors duration-300 dark:bg-[#121212] dark:text-[#eaeaea]">
       <Header />
 
-      <motion.main 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="flex-1 py-20 bg-[#f7f5f2] dark:bg-[#121212] transition-colors duration-300" 
-        role="main" 
+      <PageTransition
+        className="flex-1 bg-[#f7f5f2] py-16 transition-colors duration-300 dark:bg-[#121212] md:py-20"
+        role="main"
         aria-labelledby="about-heading"
       >
         <Container size="md">
-          <article className="prose prose-lg max-w-none space-y-16">
-            {/* Vision */}
-            <section aria-labelledby="vision-heading">
-              <h1 id="about-heading" className="text-5xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mb-8">
-                Vision & Mission
+          <article className="space-y-16">
+            <section aria-labelledby="about-heading" className="text-center">
+              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#5f5f5f] dark:text-[#9a9a9a]">
+                Vision and mission
+              </p>
+              <h1 id="about-heading" className="mb-6 text-5xl font-semibold leading-tight text-[#1f1f1f] dark:text-[#eaeaea] md:text-6xl">
+                Makana helps ambition become useful practice
               </h1>
-
-              <p className="text-2xl text-[#5f5f5f] dark:text-[#9a9a9a] mb-12 leading-relaxed">
-                Makana is a <strong>practice medium</strong> for developing
-                intentional strength.
+              <p className="mx-auto max-w-3xl text-xl leading-relaxed text-[#5f5f5f] dark:text-[#9a9a9a]">
+                Makana is an adaptive practice system for responsible
+                breakthroughs. It helps people move with clarity, build with
+                care, recover cleanly, and turn learning into shared progress.
               </p>
+            </section>
 
-              <h2 id="vision-heading" className="text-3xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mt-16 mb-6">
-                Vision
-              </h2>
-              <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed mb-6">
-                Makana exists to help people <strong>develop mastery in living</strong>.
-              </p>
-              <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed mb-6">
-                Not mastery as performance.<br />
-                Not mastery as productivity.<br />
-                But mastery as the ability to start, stop, adjust, and continue
-                with care.
-              </p>
+            <section aria-labelledby="belief-heading">
+              <div className="rounded-lg border border-[#d6d2cb] bg-[#ece9e4] p-8 dark:border-[#2B2B2B] dark:bg-[#1A1A1A] md:p-10">
+                <h2 id="belief-heading" className="mb-5 text-3xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea]">
+                  The belief
+                </h2>
+                <p className="text-lg leading-relaxed text-[#5f5f5f] dark:text-[#9a9a9a]">
+                  Humanity can figure things out when technology expands agency,
+                  protects judgment, and helps more people participate. The
+                  future needs people who can learn across fields, think clearly,
+                  build responsibly, recover well, and share what they discover.
+                </p>
+              </div>
+            </section>
 
-              <div className="bg-[#ece9e4] dark:bg-[#1c1c1c] p-8 rounded-lg my-10">
-                <p className="text-lg text-[#1f1f1f] dark:text-[#eaeaea] leading-relaxed">
-                  The long-term vision is a world where people trust their own
-                  capacity and limits, tools adapt to human energy instead of
-                  demanding consistency, strength is measured by alignment not
-                  endurance, and living well is treated as a practice, not a
-                  grind.
+            <section aria-labelledby="system-heading">
+              <div className="mb-8">
+                <h2 id="system-heading" className="mb-4 text-3xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea]">
+                  The system
+                </h2>
+                <p className="text-lg leading-relaxed text-[#5f5f5f] dark:text-[#9a9a9a]">
+                  Makana keeps the old promise of calm, low-friction practice,
+                  then extends it into missions, quests, artifacts, reflection,
+                  mastery, and responsible checks.
                 </p>
               </div>
 
-              <h2 id="mission-heading" className="text-3xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mt-16 mb-6">
-                Mission
-              </h2>
-              <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed mb-6">
-                Makana&#39;s mission is to provide a calm, reliable practice medium
-                that helps people:
-              </p>
-              <ul className="list-disc list-inside text-lg text-[#5f5f5f] dark:text-[#9a9a9a] space-y-3 mb-10">
-                <li>Begin meaningful work without resistance</li>
-                <li>Stop safely without guilt or collapse</li>
-                <li>Protect energy over time</li>
-                <li>Adapt effort to real-life conditions</li>
-                <li>Continue practicing even during low-capacity periods</li>
-              </ul>
-              <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed">
-                Makana does not aim to optimize people.<br />
-                It aims to <strong>support continuity</strong>.
-              </p>
+              <div className="grid gap-5 md:grid-cols-3">
+                {conceptGroups.map((group) => (
+                  <Card key={group.title} as="article" padding="lg" hover>
+                    <h3 className="mb-4 text-xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea]">
+                      {group.title}
+                    </h3>
+                    <ul className="space-y-3 text-[#5f5f5f] dark:text-[#9a9a9a]">
+                      {group.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </Card>
+                ))}
+              </div>
             </section>
 
-            {/* Core Insight */}
-            <section aria-labelledby="insight-heading">
-              <h2 id="insight-heading" className="text-3xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mb-6">
-                Core Insight
-              </h2>
-              <blockquote className="border-l-4 border-[#2B2B2B] pl-8 py-4 my-8">
-                <p className="text-2xl text-[#1f1f1f] dark:text-[#eaeaea] italic leading-relaxed">
-                  Strength that ignores alignment eventually becomes damage.
+            <section aria-labelledby="mastery-heading" className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+              <div>
+                <h2 id="mastery-heading" className="mb-4 text-3xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea]">
+                  Mastery without pressure
+                </h2>
+                <p className="text-lg leading-relaxed text-[#5f5f5f] dark:text-[#9a9a9a]">
+                  The mastery model draws from martial arts and chess: forms,
+                  drills, recovery, position evaluation, tempo, trade-offs, and
+                  endgame review. It rewards judgment, not raw volume.
                 </p>
-              </blockquote>
-              <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed">
-                Makana is built on the idea that starting matters, stopping
-                matters just as much, adjusting effort is a skill, and
-                continuity beats intensity. These are trainable abilities, not
-                personality traits.
-              </p>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                {masteryCards.map((domain) => (
+                  <div
+                    key={domain}
+                    className="rounded-lg border border-[#d6d2cb] bg-[#ece9e4] px-4 py-3 text-sm font-medium text-[#1f1f1f] dark:border-[#2B2B2B] dark:bg-[#1A1A1A] dark:text-[#eaeaea]"
+                  >
+                    {domain}
+                  </div>
+                ))}
+              </div>
             </section>
 
-            {/* Manifesto */}
-            <section aria-labelledby="manifesto-heading">
-              <h2 id="manifesto-heading" className="text-3xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mb-8">
-                The Makana Manifesto
-              </h2>
+            <section aria-labelledby="responsibility-heading">
+              <div className="grid gap-8 rounded-lg border border-[#d6d2cb] bg-[#ece9e4] p-8 dark:border-[#2B2B2B] dark:bg-[#1A1A1A] md:p-10 lg:grid-cols-[0.9fr_1.1fr]">
+                <div>
+                  <h2 id="responsibility-heading" className="mb-4 text-3xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea]">
+                    Responsibility is bigger than productivity
+                  </h2>
+                  <p className="text-lg leading-relaxed text-[#5f5f5f] dark:text-[#9a9a9a]">
+                    Some missions touch science, medicine, climate, education,
+                    infrastructure, policy, or public life. Makana helps people
+                    accelerate wisely through checks before scaling.
+                  </p>
+                </div>
 
-              <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed mb-10">
-                Makana exists because most tools demand too much from people.
-                They assume endless energy. They punish inconsistency. They
-                confuse pressure with progress.
-              </p>
-              <p className="text-xl text-[#1f1f1f] dark:text-[#eaeaea] font-medium mb-10">We reject that.</p>
-
-              <h3 className="text-2xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mt-12 mb-6">
-                We believe
-              </h3>
-              <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed mb-6">
-                Living well is not about doing more. It is about doing what
-                fits.
-              </p>
-              <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed mb-6">
-                Strength is not constant output. Strength is knowing when to
-                begin, when to stop, and when to adjust.
-              </p>
-              <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed">
-                Continuity matters more than intensity. Alignment matters more
-                than speed.
-              </p>
-
-              <h3 className="text-2xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mt-12 mb-6">
-                We reject grind culture
-              </h3>
-              <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed mb-6">
-                We do not believe in streaks that punish rest, systems that
-                shame inconsistency, tools that confuse exhaustion with
-                discipline, or optimization that ignores the body and mind.
-              </p>
-              <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed">
-                Burnout is not failure. It is a signal that force replaced
-                alignment.
-              </p>
-
-              <h3 className="text-2xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mt-12 mb-6">
-                We treat life as practice
-              </h3>
-              <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed mb-6">
-                Life is not a performance. It is a practice.
-              </p>
-              <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed">
-                Practice includes imperfect starts, early stops, quiet days,
-                low-capacity weeks, and returning again without guilt. Progress
-                is not linear. Practice does not require applause.
-              </p>
-
-              <h3 className="text-2xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mt-12 mb-6">
-                We respect energy
-              </h3>
-              <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed mb-6">
-                Energy is finite. Attention is precious.
-              </p>
-              <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed">
-                Makana reduces noise, limits force, allows silence, and
-                disengages early to prevent damage. If a system costs more
-                energy than it returns, it is wrong.
-              </p>
-
-              <h3 className="text-2xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mt-12 mb-6">
-                We do not fix people
-              </h3>
-              <p className="text-lg text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed">
-                People are not broken. Makana does not correct behavior or
-                impose discipline. It adjusts conditions so people can act with
-                clarity. The user is capable. The system exists to support them,
-                not replace them.
-              </p>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {responsibleChecks.map((check) => (
+                    <div
+                      key={check}
+                      className="rounded-lg border border-[#d6d2cb] bg-[#f7f5f2] px-4 py-3 text-sm font-medium text-[#1f1f1f] dark:border-[#3B3B3B] dark:bg-[#121212] dark:text-[#eaeaea]"
+                    >
+                      {check} Check
+                    </div>
+                  ))}
+                </div>
+              </div>
             </section>
 
-            {/* Closing */}
+            <section aria-labelledby="mission-heading">
+              <div className="mb-8">
+                <h2 id="mission-heading" className="mb-4 text-3xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea]">
+                  What a mission can become
+                </h2>
+                <p className="text-lg leading-relaxed text-[#5f5f5f] dark:text-[#9a9a9a]">
+                  A mission can start private and still leave a dividend: a map,
+                  tool, explainer, checklist, learning path, prototype, or better
+                  question.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                {missionExamples.map((example) => (
+                  <div
+                    key={example}
+                    className="rounded-lg border border-[#d6d2cb] bg-[#ece9e4] p-4 dark:border-[#2B2B2B] dark:bg-[#1A1A1A]"
+                  >
+                    <p className="m-0 text-[#5f5f5f] dark:text-[#9a9a9a]">{example}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
             <section>
-              <div className="bg-[#ece9e4] dark:bg-[#1c1c1c] p-10 rounded-lg">
-                <p className="text-xl text-[#1f1f1f] dark:text-[#eaeaea] leading-relaxed">
-                  Makana exists to hold space for practice. Quietly.
-                  Consistently. Over time. That is enough.
+              <div className="rounded-lg border border-[#d6d2cb] bg-[#ece9e4] p-8 text-center shadow-sm dark:border-[#2B2B2B] dark:bg-[#1A1A1A] md:p-10">
+                <p className="mx-auto max-w-3xl text-xl leading-relaxed text-[#1f1f1f] dark:text-[#eaeaea]">
+                  Makana helps people move faster with care, build with purpose,
+                  recover without losing the thread, and contribute work that
+                  serves life, society, and the planet.
                 </p>
               </div>
             </section>
           </article>
         </Container>
-      </motion.main>
+      </PageTransition>
 
       <Footer />
     </div>

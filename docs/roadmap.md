@@ -1,7 +1,8 @@
 # Makana — Product Roadmap
 Repo-ready requirements, tasks, and system design checkpoints.
 
-Makana is a **practice medium** for developing intentional strength through starting, stopping, and alignment.
+Makana is an **adaptive practice system for responsible breakthroughs**.
+It helps people turn ambition into practice, practice into artifacts, and artifacts into shared progress.
 This roadmap is written to be executable by an agent team and auditable by a reviewer.
 
 We ship calm, not chaos.
@@ -41,9 +42,11 @@ This document is organized as:
 - Setups (preset-based, minimal)
 
 ### Differentiators (must exist in v1)
-- Clutch depth (alignment and pull as a felt experience)
+- Makana practice backbone (missions, quests, artifacts, reflections)
+- Clutch depth (adaptive policy and companion UX)
+- Mastery layer (practice forms, quiet)
+- Responsible breakthrough layer (risk checks and dividends)
 - Vitality layer (healthspan, quiet)
-- Gamification (practice forms, quiet)
 - Monetization (open-core boundaries)
 
 ### Optional augmentation (introduced safely)
@@ -299,11 +302,37 @@ Makana is usable end-to-end on web and mobile with a stable core engine and pred
 ## 5) Release v1: Differentiation (public beta)
 
 ### Milestone v1 goal
-Makana becomes unmistakably Makana through Clutch depth, Vitality, Practice gamification, and sustainable open-core monetization.
+Makana becomes unmistakably Makana through missions, quests, artifacts, Clutch depth, mastery, responsible checks, and sustainable open-core monetization.
 
 ---
 
-### Sprint v1.1: Clutch State Machine (Alignment and Pull)
+### Sprint v1.1: Practice Backbone (Missions, Quests, Artifacts)
+**Outcome:** Makana has direction and proof of practice beyond standalone sessions.
+
+#### Core idea
+Users should be able to hold a meaningful mission, choose a small quest, create an artifact, and reflect on what changed.
+
+#### Tasks
+- Define mission model
+  - title, state, setup context, risk level, created timestamp
+- Define quest model
+  - mission link, next action, status, scope, optional due context
+- Define artifact capture
+  - note, diagram link, commit link, prototype link, checklist, research map, public note
+- Connect reflection
+  - what worked, what drained energy, what created momentum, what needs to be smaller, next clean move
+- Dashboard structure
+  - active setup, active mission, recommended quest, recent artifact
+
+#### Acceptance criteria
+- Users can see a meaningful direction, not only a timer
+- Quests stay small and actionable
+- Artifacts make progress tangible
+- Existing v0 flows remain usable
+
+---
+
+### Sprint v1.2: Clutch State Machine (Adaptive Policy and Companion UX)
 **Outcome:** Clutch feels like alignment, not chatter.
 
 #### Core idea
@@ -311,12 +340,13 @@ Clutch is a state model that influences:
 - what is suggested next
 - how force is limited
 - how early disengagement is triggered
+- which mission, quest, practice form, or risk check fits the current state
 
 #### Tasks
 - Define Clutch state model
   - Idle, Engaging, Holding, Limiting, Releasing, Recovering
 - Implement deterministic Clutch decisions
-  - based on recent sessions, user energy signals, Reduced Mode, setup defaults
+  - based on recent sessions, user energy signals, Reduced Mode, setup defaults, active mission, current quest, friction, and risk level
 - UI expression of Clutch
   - subtle resistance, softened actions, gentle prompts
 - Microcopy library v1
@@ -336,7 +366,7 @@ Gentle Setup introduction comes **after** 3-5 days of use:
 
 ---
 
-### Sprint v1.2: Vitality Setup (Healthspan, Quiet)
+### Sprint v1.3: Vitality Setup (Healthspan, Quiet)
 **Outcome:** Vitality runs quietly and respectfully.
 
 #### Tasks
@@ -370,12 +400,14 @@ Vitality onboarding is **separate and opt-in**, introduced after 3-5 days of use
 
 ---
 
-### Sprint v1.3: Gamification (Practice Forms)
+### Sprint v1.4: Mastery System (Practice Forms)
 **Outcome:** Progress is recognized without addiction mechanics.
 
 #### Tasks
 - Define practice forms
-  - Clean Start, Clean Stop, Gentle Recovery, Return to Alignment, Continuity Through Low Weeks
+  - Clean Start, Clean Stop, Recovery Return, Strategic Pause, Deep Practice, Learning to Artifact, Mission Breakdown, Endgame Review, One Clean Move
+- Define mastery domains
+  - Energy, Focus, Strategy, Learning, Build, Risk, Contribution
 - Form detection logic (deterministic)
   - rules based on behavior, not self-report alone
 - Quiet acknowledgements
@@ -388,7 +420,25 @@ Vitality onboarding is **separate and opt-in**, introduced after 3-5 days of use
 
 ---
 
-### Sprint v1.4: Monetization (Open-Core)
+### Sprint v1.5: Responsible Breakthrough Layer
+**Outcome:** Serious missions get useful checks before scaling.
+
+#### Tasks
+- Implement risk check primitives
+  - Benefit, Harm, Stakeholder, Evidence, Scope, Regulation, Dividend
+- Add risk-aware mission review
+- Add pilot-mode prompts for smallest safe version
+- Add dividend artifact suggestions
+
+#### Acceptance criteria
+- High-stakes missions surface careful review
+- Checks stay brief and actionable
+- No legal, medical, or safety claims are over-promised
+- Users can still proceed with small safe versions
+
+---
+
+### Sprint v1.6: Monetization (Open-Core)
 **Outcome:** Sustainable monetization without coercion.
 
 #### Philosophy
@@ -416,7 +466,7 @@ Free at the core. Pay to deepen, not to unlock dignity.
 
 ---
 
-### Sprint v1.5: AI Augmentation (Opt-in, Privacy-first)
+### Sprint v1.7: AI Augmentation (Opt-in, Privacy-first)
 **Outcome:** AI enhances language and suggestions without becoming a dependency.
 
 #### Positioning
@@ -518,9 +568,11 @@ By end of v0:
 - Docs: README, ROADMAP, DESIGN, TONE
 
 By end of v1:
+- Missions, quests, artifacts, and reflections shipped as the practice backbone
 - Clutch state machine implemented and felt in UI
-- Vitality Setup shipped with guardrails
 - Practice Forms recognition shipped
+- Responsible mission checks and dividend prompts shipped
+- Vitality Setup shipped with guardrails
 - Monetization shipped without coercion
 - AI augmentation shipped as opt-in with fallback
 

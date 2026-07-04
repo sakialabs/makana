@@ -246,15 +246,27 @@ Motion should feel like **breathing**, not stimulation.
 Clutch is expressed visually, not announced.
 
 Clutch appears through:
+- lightweight fits tied to setup or mode
 - reduced opacity
 - disabled or softened actions
 - slowed transitions
 - subtle resistance to interaction
 
+Initial fits:
+- Builder Fit
+- Study Fit
+- Recovery Fit
+- Scout Fit
+- Deep Practice Fit
+- Guardrail Fit
+- Dividend Fit
+- Regulation Fit
+
 Clutch does not:
 - interrupt the user
 - demand attention
 - add visual noise
+- turn fits into achievement skins
 
 Alignment should be **felt**, not explained.
 

@@ -7,13 +7,14 @@
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Container } from '@/components/ui/container';
+import { PageTransition } from '@/components/ui/page-transition';
 
 export default function PrivacyPage() {
   return (
     <div className="flex flex-col min-h-screen bg-[#f7f5f2] dark:bg-[#121212] transition-colors duration-300">
       <Header />
 
-      <main className="flex-1 py-16 bg-[#f7f5f2] dark:bg-[#121212]">
+      <PageTransition className="flex-1 py-16 bg-[#f7f5f2] dark:bg-[#121212]">
         <Container size="md">
           <article className="prose prose-lg max-w-none">
             <h1 className="text-4xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mb-6">
@@ -57,7 +58,7 @@ export default function PrivacyPage() {
 
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] mb-4">
-                What We Don't Do
+                What We Don&apos;t Do
               </h2>
               <ul className="list-disc list-inside text-[#5f5f5f] dark:text-[#9a9a9a] space-y-2">
                 <li>We never sell your data</li>
@@ -98,18 +99,23 @@ export default function PrivacyPage() {
                 Contact
               </h2>
               <p className="text-[#5f5f5f] dark:text-[#9a9a9a] leading-relaxed">
-                For privacy questions or requests, email us at{' '}
+                For non-sensitive privacy questions or requests, open a GitHub
+                issue while the dedicated privacy inbox is being set up. Do not
+                include private account details in public issues.{' '}
                 <a
-                  href="mailto:privacy@makana.app"
+                  href="https://github.com/sakialabs/makana/issues/new?title=Privacy%20question%3A%20"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-[#2B2B2B] dark:text-[#eaeaea] hover:underline"
+                  aria-label="Open a Makana privacy issue in a new tab"
                 >
-                  privacy@makana.app
+                  Open a privacy issue
                 </a>
               </p>
             </section>
           </article>
         </Container>
-      </main>
+      </PageTransition>
 
       <Footer />
     </div>

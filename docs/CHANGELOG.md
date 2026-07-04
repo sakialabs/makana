@@ -4,6 +4,16 @@ All notable changes to Makana will be documented here.
 
 ## [Unreleased]
 
+### Contact and Clutch Fit Refresh (2026-07-04)
+
+**Contact Route**
+- Replaced placeholder inbox links with Makana GitHub Issues links
+- Updated contact copy so support expectations match the temporary issue-based workflow
+
+**Clutch Fits**
+- Added Regulation Fit after Dividend Fit on the public Clutch page
+- Synced the Clutch reference and visual guidance docs with the new fit list
+
 ### Mobile Home Screen Auth Alignment (2026-01-14)
 
 **Tone-Aligned Language**

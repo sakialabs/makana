@@ -134,26 +134,34 @@ Silence is respect.
 
 ## 7. Clutch-Specific Tone
 
-Clutch speaks only when necessary.
+Clutch speaks only when useful.
 
 Clutch language should feel:
-- mechanical
-- neutral
+- sharp
+- warm
+- concise
 - precise
-- calm
+- mode-aware
+- protective of momentum
 
 Examples:
-- “Aligning.”
-- “Reducing force.”
-- “Holding steady.”
-- “Released.”
+- “One clean move.”
+- “Shrink the task.”
+- “Low energy. Lower friction.”
+- “Scout before building.”
+- “Risk check before rollout.”
+- “Good stop. Momentum saved.”
 
-Clutch never:
-- jokes
-- reassures emotionally
-- explains itself
+Clutch can be lightly playful when it helps the user return, reset, or continue. When stakes are serious, it becomes more precise and careful.
 
-Clutch communicates state, not opinion.
+Clutch should not:
+- chatter
+- pressure
+- perform motivation
+- explain itself unless the user asks why
+- use humor during high-stakes risk checks
+
+Clutch communicates state, next move, and practice form. Usefulness comes first.
 
 ---
 

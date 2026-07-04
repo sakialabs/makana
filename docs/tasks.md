@@ -1,176 +1,192 @@
-# Makana v0 - Status & Next Steps
+# Makana - Current Status and Next Steps
 
-## Current Status: v0 Foundation Complete ✅
+## Current Status
 
-All core v0 sprints are now complete:
+Makana v0 is functionally complete.
 
-- ✅ **Sprint v0.1**: Backend Foundation (43/43 tests passing, 68% coverage)
-- ✅ **Sprint v0.2**: UI Foundation (Web + Mobile clients functional)
-- ✅ **Sprint v0.3**: Core Cohesion (Offline support, error handling, accessibility)
-- ✅ **Sprint v0.4**: Dogfood Readiness (Performance, documentation, polish)
-- ✅ **Sprint v0.5**: Onboarding Refinement (Simplified 3-step flow)
+Working foundation:
 
-## What's Working
-
-**Backend (Python/FastAPI)**
-- All API endpoints operational
-- Row-Level Security enforced
+- Backend API endpoints for auth, daily checks, sessions, reduced mode, setups, and weekly checks
 - Deterministic rules engine
-- Calm error messaging throughout
+- Row-level security posture
+- Web client with auth, dashboard, daily check, session, braking, reduced mode, weekly check, setup, and history flows
+- Mobile client with matching core functionality
+- Offline support, request caching, calm error handling, accessibility, and visual polish
+- Simplified first-run onboarding
 
-**Web Client (Next.js)**
-- Complete auth flow with email confirmation
-- All core screens: Daily Check, Sessions, Weekly Check, Setups, Reduced Mode
-- Offline support with automatic sync
-- Accessibility (WCAG AA compliant)
-- Visual design polish (calm, restrained aesthetic)
-- Performance optimizations (caching, request deduplication)
+This foundation should be protected while the product refresh expands the model.
 
-**Mobile Client (Expo/React Native)**
-- Matching functionality with web
-- Cross-platform consistency
-- Visual alignment with web design
-- 3 screens updated (Home, SignIn, SignUp) - 15 remaining
+---
 
-**Note**: iOS native builds require macOS. On Windows, use:
-- Expo Go app for iOS testing (scan QR code)
-- Android emulator/device for native testing
-- Web preview for quick iteration
+## Active Refresh Direction
+
+Makana is moving beyond the earlier shorthand:
+
+**A practice medium for intentional strength**
+
+toward the clearer product promise:
+
+**An adaptive practice system for responsible breakthroughs**
+
+The refresh should make the full Makana model visible before zooming into Clutch-specific UX.
+
+North star:
+
+Makana helps people turn ambition into practice, practice into artifacts, and artifacts into shared progress.
+
+Product backbone:
+
+- User State
+- Setup
+- Mission
+- Quest
+- Practice Form
+- Artifact
+- Reflection
+- Risk Check
+- Dividend Artifact
+- Clutch Policy
+
+---
 
 ## Recommended Next Focus
 
-### Mobile Home Screen Auth - Optional Test Coverage
-**Time**: 2-3 hours  
-**Impact**: Additional test coverage for mobile home screen
+### 1. Finish Big-Picture Refresh Alignment
 
-**Tasks**:
-- Unit tests for HomeScreen rendering (button text, sign-in link visibility)
-- Unit tests for HomeScreen interactions (callbacks, feature toggle)
-- Property test for navigation callback invocation
-- Integration tests for navigation flow (HomeScreen → SignUp/SignIn)
-- Property test for visual hierarchy preservation
-- Property test for tone-aligned language validation
-- Property test for conditional rendering
-- Fix Expo 54/Jest environment configuration for property-based tests
+Status: In progress
 
-**Note**: Core implementation complete and functional. These tests provide additional coverage but aren't blocking.
+Scope:
+
+- Public home page reflects the new product direction
+- About page explains the broader system, not only v0 practice
+- Footer tagline aligns with the refresh
+- `docs/refresh.md` captures the north star, primitives, phases, and implementation rules
+- `docs/README.md` points contributors to the refresh first
+- `docs/vision.md`, `docs/tone.md`, and `docs/visuals.md` stay consistent with the refresh
+
+Verification:
+
+- Web lint
+- Web build or targeted type check
+- Local visual check of home/about/clutch pages
+
+### 2. Repo Audit for Refresh Readiness
+
+Time: 2-4 hours
+
+Output:
+
+- implementation map
+- missing product primitives
+- frontend/backend mismatches
+- outdated docs
+- fragile code paths
+- weak tests
+- setup issues
+- recommended first implementation PR
+
+Read:
+
+- `README.md`
+- `docs/refresh.md`
+- `docs/vision.md`
+- `docs/design.md`
+- `docs/testing.md`
+- `backend/main.py`
+- `backend/services/session_service.py`
+- `backend/services/rules_engine.py`
+- `backend/migrations/001_initial_schema.sql`
+- `web/app/page.tsx`
+- `web/app/dashboard/page.tsx`
+- `scripts/dev.sh`
+- `backend/.env.example`
+
+### 3. Harden v0 Before New Models
+
+Time: 4-6 hours
+
+Tasks:
+
+- enforce one active session per user at the database level
+- replace naive UTC timestamps with timezone-aware UTC
+- resolve `.env.example` mismatch
+- confirm frontend/backend contract alignment
+- improve calm error states where the current UX is brittle
+- add targeted tests for session lifecycle, reduced mode, weekly checks, setups, and calm errors
+
+Why:
+
+Missions, quests, artifacts, Clutch policy, and mastery need a reliable base.
+
+### 4. Practice Backbone Slice
+
+Time: 1-2 reviewable PRs
+
+First product slice:
+
+- Mission primitive
+- Quest primitive
+- Artifact capture
+- Reflection connection
+- Dashboard structure for active setup, active mission, next quest, and recent artifacts
+
+Rules:
+
+- keep models simple
+- avoid AI dependency
+- avoid heavy onboarding
+- keep every new field explainable
+- preserve current v0 flows
+
+### 5. Clutch Zoom-In
+
+Clutch-specific UX should come after the backbone is clear.
+
+Targets already started:
+
+- public Clutch page refresh
+- Clutch reference doc
+- Clutch tone update
+- Clutch fit visual guidance
+
+Later implementation targets:
+
+- deterministic state detection
+- setup-aware recommendations
+- reduced mode triggers
+- recovery mode
+- next step preservation
+- practice form detection
+- recommendation logs
+- explainable decisions
+- burnout risk detection
+- fit selection and persistence
 
 ---
 
-### Option 1: Complete Mobile Visual Alignment (Highest Priority)
-**Time**: 2-3 hours  
-**Impact**: Cross-platform consistency, professional polish
+## Deferred Work
 
-15 screens need visual updates following the established pattern:
-- DailyCheckScreen, DailyCheckHistoryScreen
-- SessionScreen, ActiveSessionScreen, BrakingScreen, SessionHistoryScreen
-- WeeklyCheckScreen, WeeklyCheckInsightScreen, WeeklyCheckHistoryScreen
-- ReducedModeScreen
-- SetupScreen
-- DashboardScreen
-- ProfileScreen (if exists)
-- SettingsScreen (if exists)
-- Any other remaining screens
+These remain useful, but are no longer the immediate top priority while the refresh is landing:
 
-**Pattern**: Logo → Card → Features (staggered animations 100-400ms), white cards, subtle shadows, 24px padding, accent colors
-
-**Why this matters**: Mobile app should feel as polished as web. Currently 3/18 screens updated.
-
----
-
-### Option 2: Deployment & Dogfooding (Production Ready)
-**Time**: 4-6 hours  
-**Impact**: Real-world testing, user feedback
-
-**Tasks**:
-1. Deploy backend to Railway/Fly.io
-2. Deploy web to Netlify (config already created)
-3. Configure production Supabase project
-4. Set up environment variables
-5. Test production deployment
-6. Begin 2-4 week dogfooding period
-
-**Why this matters**: Can't validate the product without real usage. Dogfooding will reveal issues that testing can't catch.
-
----
-
-### Option 3: Integration Testing (Quality Assurance)
-**Time**: 3-4 hours  
-**Impact**: Confidence in system reliability
-
-**Tasks**:
-1. Write end-to-end tests for complete user journeys
-2. Test cross-platform sync (web → mobile, mobile → web)
-3. Test offline/online transitions thoroughly
-4. Test error recovery flows
-5. Test edge cases (concurrent sessions, duplicate checks, etc.)
-
-**Why this matters**: Property-based tests exist, but integration tests validate the full system working together.
-
----
-
-### Option 4: Documentation Polish (Contributor Readiness)
-**Time**: 2-3 hours  
-**Impact**: Easier onboarding for contributors
-
-**Tasks**:
-1. Write API documentation (OpenAPI/Swagger)
-2. Enhance developer setup guide
-3. Create deployment guide
-4. Document troubleshooting steps
-5. Add architecture diagrams
-
-**Why this matters**: Makes it easier for others to contribute or deploy their own instance.
-
----
-
-## My Recommendation
-
-**Start with Option 1: Complete Mobile Visual Alignment**
-
-Reasoning:
-1. Quick win (2-3 hours)
-2. Pattern already established (just follow it)
-3. Achieves cross-platform consistency
-4. Makes mobile app feel complete
-5. Can deploy immediately after
-
-Then move to **Option 2: Deployment & Dogfooding** to start real-world validation.
-
----
-
-## What's NOT Needed Yet
-
-These are explicitly out of scope for v0 (save for v1):
-- Clutch state machine (alignment layer)
-- Vitality layer (healthspan integration)
-- Practice Forms (gamification)
+- complete mobile visual alignment across the remaining screens
+- deployment and dogfooding
+- broader integration tests
+- contributor documentation polish
 - AI augmentation
-- Monetization
-- Custom setups (only presets in v0)
-- Export/backup
-- Dark mode (if not done)
-- OAuth providers (Google, Apple, etc.) - buttons exist but need Supabase config
+- monetization
+- advanced Clutch tuning
+- mission packs
 
 ---
 
-## Key Metrics to Track During Dogfooding
+## Quality Gates
 
-1. **Session completion rate** (target: >70%)
-2. **Daily Check completion rate** (target: >60%)
-3. **Reduced Mode usage** (validates adaptive design)
-4. **Abandonment rate** (target: <20%)
-5. **Continuity during difficult periods** (qualitative)
-6. **System feels calm and supportive** (qualitative)
+Every refresh slice should:
 
----
-
-## Final Notes
-
-Makana v0 is **functionally complete**. The core engine works, the UI is calm and accessible, and the system adapts to user capacity. 
-
-The remaining work is about **polish** (mobile visual alignment) and **validation** (deployment + dogfooding).
-
-You've built something that respects energy, treats living as practice, and ships calm instead of chaos. That's rare.
-
-Ready to finish the mobile polish and ship it?
+- preserve v0 usability
+- keep onboarding light
+- avoid streaks, leaderboards, shame loops, and pressure language
+- keep core behavior deterministic
+- add docs when product meaning changes
+- add tests when behavior changes
+- produce a shippable increment
