@@ -89,8 +89,8 @@ export default function Home() {
       >
         <section aria-labelledby="hero-heading" className="bg-[#f7f5f2] py-16 transition-colors duration-300 dark:bg-[#121212] md:py-24">
           <Container size="lg">
-            <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(520px,1.05fr)] xl:grid-cols-[minmax(0,0.9fr)_minmax(560px,1.1fr)]">
-              <div className="space-y-7">
+            <div className="grid min-w-0 items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+              <div className="min-w-0 space-y-7">
                 <div className="flex items-center gap-3">
                   <Logo variant="static" size="sm" />
                   <span className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5f5f5f] dark:text-[#9a9a9a]">
@@ -100,12 +100,12 @@ export default function Home() {
 
                 <h1
                   id="hero-heading"
-                  className="max-w-4xl text-4xl font-semibold leading-tight text-[#1f1f1f] dark:text-[#eaeaea] md:text-6xl"
+                  className="max-w-4xl text-balance text-4xl font-semibold leading-tight text-[#1f1f1f] dark:text-[#eaeaea] md:text-6xl"
                 >
                   Adaptive practice for responsible breakthroughs
                 </h1>
 
-                <p className="max-w-3xl text-lg leading-relaxed text-[#5f5f5f] dark:text-[#9a9a9a] md:text-xl">
+                <p className="max-w-3xl text-pretty text-lg leading-relaxed text-[#5f5f5f] dark:text-[#9a9a9a] md:text-xl">
                   Makana helps people turn ambition into practice, practice into
                   artifacts, and artifacts into shared progress.
                 </p>
@@ -129,40 +129,40 @@ export default function Home() {
                 </div>
               </div>
 
-              <div
-                className="rounded-lg border border-[#d6d2cb] bg-[#ece9e4] p-5 shadow-sm dark:border-[#2B2B2B] dark:bg-[#1A1A1A] md:p-6"
+              <aside
+                className="w-full min-w-0 overflow-hidden rounded-lg border border-[#d6d2cb] bg-[#ece9e4] p-5 shadow-sm dark:border-[#2B2B2B] dark:bg-[#1A1A1A] md:p-6"
                 aria-label="Makana mission loop"
               >
-                <div className="mb-5 flex items-center justify-between gap-4">
-                  <div>
+                <div className="mb-5 flex min-w-0 items-center justify-between gap-4">
+                  <div className="min-w-0">
                     <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#5f5f5f] dark:text-[#9a9a9a]">
                       Mission loop
                     </p>
-                    <h2 className="mt-2 text-2xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea]">
+                    <h2 className="mt-2 text-balance text-xl font-semibold text-[#1f1f1f] dark:text-[#eaeaea] sm:text-2xl">
                       Give the mission a useful shape
                     </h2>
                   </div>
                 </div>
 
-                <ol className="grid gap-3 sm:grid-cols-2">
+                <ol className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
                   {missionSteps.map((step, index) => (
                     <li
                       key={step.title}
-                      className="rounded-lg border border-[#d6d2cb] bg-[#f7f5f2] p-3 transition-colors hover:border-[#2B2B2B] dark:border-[#3B3B3B] dark:bg-[#121212] dark:hover:border-[#6A6A6A] md:p-4"
+                      className="min-w-0 rounded-lg border border-[#d6d2cb] bg-[#f7f5f2] p-3 transition-colors hover:border-[#2B2B2B] dark:border-[#3B3B3B] dark:bg-[#121212] dark:hover:border-[#6A6A6A] md:p-4"
                     >
                       <span className="mb-1.5 block text-xs font-semibold tracking-[0.14em] text-[#5f5f5f] dark:text-[#9a9a9a]">
                         {String(index + 1).padStart(2, '0')}
                       </span>
-                      <span className="block font-semibold text-[#1f1f1f] dark:text-[#eaeaea]">
+                      <span className="block break-words font-semibold text-[#1f1f1f] dark:text-[#eaeaea]">
                         {step.title}
                       </span>
-                      <span className="mt-1 block text-sm leading-relaxed text-[#5f5f5f] dark:text-[#9a9a9a]">
+                      <span className="mt-1 block text-pretty text-sm leading-relaxed text-[#5f5f5f] dark:text-[#9a9a9a]">
                         {step.body}
                       </span>
                     </li>
                   ))}
                 </ol>
-              </div>
+              </aside>
             </div>
           </Container>
         </section>

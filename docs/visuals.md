@@ -246,11 +246,14 @@ Motion should feel like **breathing**, not stimulation.
 Clutch is expressed visually, not announced.
 
 Clutch appears through:
+- the fox mark as the primary companion asset
 - lightweight fits tied to setup or mode
 - reduced opacity
 - disabled or softened actions
 - slowed transitions
-- subtle resistance to interaction
+- subtle changes in pacing and emphasis
+
+Use the static fox PNG in compact UI, navigation, and repeated surfaces. Reserve the animated fox GIF for roomy Clutch moments where motion has breathing room, such as the public Clutch page hero.
 
 Initial fits:
 - Builder Fit
@@ -267,6 +270,7 @@ Clutch does not:
 - demand attention
 - add visual noise
 - turn fits into achievement skins
+- use magnetic or cursor-following motion
 
 Alignment should be **felt**, not explained.
 

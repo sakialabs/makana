@@ -17,7 +17,7 @@ It echoes the literal meaning of *Kung Fu*: mastery cultivated through practice 
 - [✨ What Makana helps with](#-what-makana-helps-with)
 - [🧱 Product primitives](#-product-primitives)
 - [🌊 Core flow](#-core-flow)
-- [🧲 Clutch (adaptive companion)](#-clutch-adaptive-companion)
+- [🦊 Clutch (adaptive companion)](#-clutch-adaptive-companion)
 - [🧩 Setups (modular ways of practicing)](#-setups-modular-ways-of-practicing)
 - [🌿 Vitality & healthspan](#-vitality--healthspan)
 - [🕹️ Gamification (practice & mastery)](#️-gamification-practice--mastery)
@@ -121,7 +121,7 @@ Foundational by intent.
 
 ---
 
-## 🧲 Clutch (adaptive companion)
+## 🦊 Clutch (adaptive companion)
 
 **Clutch is Makana's adaptive practice companion.**
 

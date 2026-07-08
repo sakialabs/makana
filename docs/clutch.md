@@ -62,6 +62,8 @@ Initial fits:
 
 Fits are not avatars, achievement skins, or identities. They are subtle visual states that help the companion feel situated.
 
+The fox mark is Clutch's primary companion asset. Use the static PNG for compact or repeated UI, and reserve the animated GIF for roomy Clutch moments where motion can stay calm, such as the public Clutch page hero.
+
 ---
 
 ## Clutch Modes

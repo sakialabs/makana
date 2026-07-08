@@ -65,6 +65,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -80,7 +81,16 @@ body {
   color: var(--color-charcoal);
   background-color: var(--color-parchment);
   min-height: 100vh;
+  overflow-x: hidden;
   transition: background-color 300ms ease, color 300ms ease;
+}
+
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow !important;
+  transition-duration: 240ms !important;
+  transition-timing-function: ease !important;
 }
 
 /* Typography Hierarchy */

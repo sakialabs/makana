@@ -7,8 +7,6 @@
 'use client';
 
 import Link from 'next/link';
-import { useRef } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -147,40 +145,6 @@ const responsibleChecks = [
 ];
 
 export default function ClutchPage() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { damping: 20, stiffness: 200 };
-  const x = useSpring(mouseX, springConfig);
-  const y = useSpring(mouseY, springConfig);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
-
-    const rect = containerRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const distanceX = e.clientX - centerX;
-    const distanceY = e.clientY - centerY;
-    const maxDistance = 250;
-    const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
-
-    if (distance < maxDistance) {
-      const strength = 1 - distance / maxDistance;
-      mouseX.set(distanceX * strength * 0.35);
-      mouseY.set(distanceY * strength * 0.35);
-    } else {
-      mouseX.set(0);
-      mouseY.set(0);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
-
   return (
     <div className="flex min-h-screen flex-col bg-[#f7f5f2] text-[#1f1f1f] transition-colors duration-300 dark:bg-[#121212] dark:text-[#eaeaea]">
       <Header />
@@ -194,24 +158,12 @@ export default function ClutchPage() {
         <section className="bg-[#f7f5f2] pb-16 pt-16 transition-colors duration-300 dark:bg-[#121212] md:pb-20 md:pt-20">
           <Container size="md">
             <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-              <motion.div
-                ref={containerRef}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-                className="mb-8 flex h-36 w-36 items-center justify-center"
-                aria-label="Interactive Clutch logo"
+              <div
+                className="mb-8 flex h-36 w-36 items-center justify-center rounded-full border border-[#d6d2cb] bg-[#ece9e4] p-4 shadow-sm transition-colors duration-300 dark:border-[#2B2B2B] dark:bg-[#1A1A1A] sm:h-40 sm:w-40"
+                aria-label="Clutch logo"
               >
-                <motion.div style={{ x, y }} className="cursor-pointer">
-                  <motion.div
-                    role="img"
-                    aria-label="Clutch logo"
-                    animate={{ y: [0, -10, 0], rotate: [0, 2, -2, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                  >
-                    <ClutchLogo size="lg" />
-                  </motion.div>
-                </motion.div>
-              </motion.div>
+                <ClutchLogo variant="animated" size="xl" />
+              </div>
 
               <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#5f5f5f] dark:text-[#9a9a9a]">
                 Personal practice companion

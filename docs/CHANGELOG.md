@@ -558,7 +558,7 @@ All notable changes to Makana will be documented here.
   - Footer: static logo with branding
   - Sidebar: static logo for authenticated users
   - Sign In/Sign Up: animated logo above forms (80x80)
-  - Clutch page: ClutchLogo with smooth magnet animation
+  - Clutch page: ClutchLogo with calm companion animation
 - Updated favicon to use logo.png (web)
 - Updated mobile app.json configuration
   - App name: "Makana" (was "mobile")
